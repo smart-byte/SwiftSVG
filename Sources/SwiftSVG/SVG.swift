@@ -27,7 +27,8 @@ public struct SVG: Container {
     public var polylines: [Polyline]?
     public var rectangles: [Rectangle]?
     public var texts: [Text]?
-    
+    public var images: [Image]?
+
     /// A non-optional, non-spaced representation of the `title`.
     public var name: String {
         let name = title ?? "SVG Document"
@@ -50,6 +51,7 @@ public struct SVG: Container {
         case polygons = "polygon"
         case rectangles = "rect"
         case texts = "text"
+        case images = "image"
     }
     
     public init() {

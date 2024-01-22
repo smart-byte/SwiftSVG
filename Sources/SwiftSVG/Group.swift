@@ -20,7 +20,8 @@ public struct Group: Container, Element {
     public var polylines: [Polyline]?
     public var rectangles: [Rectangle]?
     public var texts: [Text]?
-    
+    public var images: [Image]?
+
     // CoreAttributes
     public var id: String?
     public var title: String?
@@ -51,6 +52,7 @@ public struct Group: Container, Element {
         case polygons = "polygon"
         case rectangles = "rect"
         case texts = "text"
+        case images = "image"
         case id
         case title
         case desc
