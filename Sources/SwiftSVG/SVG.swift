@@ -11,6 +11,7 @@ import XMLCoder
 /// | [W3](https://www.w3.org/TR/SVG11/)
 public struct SVG: Container {
     
+    public var includeXmlns: Bool = false
     public var viewBox: String?
     public var width: String?
     public var height: String?
@@ -57,10 +58,11 @@ public struct SVG: Container {
     public init() {
     }
     
-    public init(width: Int, height: Int) {
+    public init(width: Int, height: Int, includeXmlns: Bool = false) {
         self.width = "\(width)px"
         self.height = "\(height)px"
         viewBox = "0 0 \(width) \(height)"
+        self.includeXmlns = includeXmlns
     }
 }
 
@@ -76,10 +78,12 @@ extension SVG: CustomStringConvertible {
         if let desc = self.desc {
             contents.append("\n<desc>\(desc)</desc>")
         }
-        
+
+        let xmlns = includeXmlns ? "xmlns=\"http://www.w3.org/2000/svg\"" : ""
+
         contents.append(containerDescription)
         
-        return "<svg viewBox=\"\(viewBox ?? "")\" width=\"\(width ?? "")\" height=\"\(height ?? "")\">\(contents)\n</svg>"
+        return "<svg\(xmlns) viewBox=\"\(viewBox ?? "")\" width=\"\(width ?? "")\" height=\"\(height ?? "")\">\(contents)\n</svg>"
     }
 }
 
