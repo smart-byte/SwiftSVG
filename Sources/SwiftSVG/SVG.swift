@@ -79,7 +79,7 @@ extension SVG: CustomStringConvertible {
             contents.append("\n<desc>\(desc)</desc>")
         }
 
-        let xmlns = includeXmlns ? "xmlns=\"http://www.w3.org/2000/svg\"" : ""
+        let xmlns = includeXmlns ? " xmlns=\"http://www.w3.org/2000/svg\"" : ""
 
         contents.append(containerDescription)
         
