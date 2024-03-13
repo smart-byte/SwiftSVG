@@ -8,6 +8,7 @@ public protocol Container {
     var polylines: [Polyline]? { get set }
     var rectangles: [Rectangle]? { get set }
     var texts: [Text]? { get set }
+    var images: [Image]? { get set }
 }
 
 internal enum ContainerKeys: String, CodingKey {
@@ -20,6 +21,7 @@ internal enum ContainerKeys: String, CodingKey {
     case polygons = "polygon"
     case rectangles = "rect"
     case texts = "text"
+    case images = "image"
 }
 
 public extension Container {
@@ -52,7 +54,10 @@ public extension Container {
         
         let texts = self.texts?.compactMap({ $0.description }) ?? []
         texts.forEach({ contents.append("\n\($0)") })
-        
+
+        let images = self.images?.compactMap({ $0.description }) ?? []
+        images.forEach({ contents.append("\n\($0)") })
+
         return contents
     }
 }
